@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html ng-app="taskManagerApp">
+<head>
+    <title>Task manager</title>
+
+    <script type="text/javascript" src="node_modules/moment/moment.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.js"></script>
+    <script type="text/javascript" src="node_modules/angular-bootstrap-datetimepicker/src/js/datetimepicker.templates.js"></script>
+    <script src="app.js"></script>
+    <script src="app-controller.js"></script>
+    <script src="components/model.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/angular-bootstrap-datetimepicker/src/css/datetimepicker.css"/>
+    <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-controller="taskManagerAppCtrl">
+    <div class="container">
+        <ng-include src="url"></ng-include>
+    </div>
+</body>
+</html>

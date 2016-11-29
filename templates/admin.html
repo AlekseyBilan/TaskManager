@@ -1,0 +1,102 @@
+<div class="task-manager-wrap">
+    <div class="header">
+        <h2>Task manager</h2>
+        <button type="submit" class="btn btn-info preview" ng-click="showAddNewTask = !showAddNewTask">
+            {{showAddNewTask? "Show Add block" : "Hide Add block" }}
+        </button>
+    </div>
+
+    <div class="left-panel">
+        <ul class="tasks-wrapper">
+            <li ng-repeat="task in tasks" class="articles" title="Click to edit"
+                ng-click="showEditBlock ? showEditBtn  = false : showEditBtn = !showEditBtn">
+
+                <div class="description-wrap" ng-show="!showEditBlock">
+                    <table>
+                        <tr>
+                            <td>Name:</h3></td>
+                            <td><h3 class="input-text task-name">{{task.taskName}}</h3></td>
+                        </tr>
+                        <tr>
+                            <td>Category:</td>
+                            <td><span class="category">{{task.category}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Remainder:</td>
+                            <td><span class="reminder">{{task.reminder | date:'yyyy-MM-dd HH:mm'}}</span></td>
+                        </tr>
+                        <tr>
+                            <td>Description:</td>
+                            <td><span class="description">{{task.description}}</span></td>
+                        </tr>
+                    </table>
+                    <div class="actions-wrap" ng-show="showEditBtn">
+                        <a href="#" class="remove icon" ng-click="removeTask(task.id)"></a>
+                        <a href="#" ng-click="showEditBlock = !showEditBlock" class="edit icon"></a>
+                    </div>
+                </div>
+
+
+                <!--edit block-->
+                <div ng-show="showEditBlock">
+                    <input class="input-text task-name" type="text" ng-model="task.editTaskName"
+                           placeholder="task-name" value="{{task.taskName}}"/>
+                    <input class="input-text category" type="text" ng-model="task.editCategory"
+                           placeholder="category" value="{{task.category}}"/>
+                    <button class="input-text reminder" ng-model="task.editReminder" placeholder="reminder"
+                            ng-click="editDatepicker = !editDatepicker">{{task.editReminder | date:'yyyy-MM-dd HH:mm'}}
+                    </button>
+                    <div ng-show="editDatepicker">
+                        <datetimepicker data-ng-model="task.editReminder"
+                                        data-on-set-time="editDatepicker = !editDatepicker"></datetimepicker>
+                    </div>
+                    <textarea class="description" ng-model="task.editDescription" placeholder="description">{{task.description}}</textarea>
+
+                    <div class="actions-wrap">
+                        <button class="btn btn-warning" ng-click="showEditBlock = !showEditBlock; showEditBtn = true">
+                            Cancel
+                        </button>
+                        <button class="btn btn-success"
+                                ng-click="editTask(task.id, task.editTaskName, task.editCategory, task.editDescription, task.editReminder); showEditBlock = !showEditBlock; showEditBtn = true">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </li>
+            <li ng-hide="tasks.length > 0" class="no-data">There are no task, yet</li>
+        </ul>
+    </div>
+
+    <div class="right-panel">
+        <!--graphics-->
+        <div class="graph-wrapper">
+
+        </div>
+        <!--create new task-->
+        <div class="create-new-article" ng-hide="showAddNewTask">
+            <h3>Create new task</h3>
+            <input class="input-text task-name" id="task-name" type="text" ng-model="currentArticle.taskName"
+                   placeholder="Add task-name"/>
+            <input class="input-text category" id="category" type="text" ng-model="currentArticle.category"
+                   placeholder="Add task category"/>
+
+            <div>
+                <button class="input-text reminder" ng-model="currentArticle.reminder"
+                        ng-click="datepicker = !datepicker"> {{ (currentArticle.reminder | date:'yyyy-MM-dd HH:mm') ||'Setup reminder'}}
+                </button>
+                <div ng-show="datepicker" class="calendar-wrap">
+                    <datetimepicker data-ng-model="currentArticle.reminder"data-on-set-time="datepicker = !datepicker"></datetimepicker>
+                </div>
+            </div>
+
+            <textarea class="description" ng-model="currentArticle.description" placeholder="Add description"></textarea>
+
+            <div class="actions-wrap">
+                <button class="btn clear btn-danger" ng-click="clearArticleForm();">Clear</button>
+                <button class="btn save btn-success" ng-click="addNewArticle();">Add article</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

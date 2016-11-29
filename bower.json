@@ -1,0 +1,36 @@
+{
+  "name": "task-manager",
+  "version": "0.0.1",
+  "overrides": {
+    "angular-bootstrap-datetimepicker": {
+      "main": [
+        "src/js/datetimepicker.js",
+        "src/js/datetimepicker.templates.js",
+        "src/css/datetimepicker.css"
+      ],
+      "dependencies": {
+        "angular": "^1.x",
+        "moment": "^2.x"
+      }
+    }
+  },
+  "dependencies": {
+    "angular": "^1.5.9",
+    "angular-bootstrap-datetimepicker": "^1.1.3",
+    "d3": "^4.4.0"
+  },
+  "authors": [
+    "AlekseyBilan <bilan.aleksey.sergeevich@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
