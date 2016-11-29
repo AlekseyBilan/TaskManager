@@ -1,8 +1,11 @@
 You should Install node.js and bower
-after it clone repository to your local server
-Run next commands
+after it clone repository to your local server and
+run next commands
 
 npm install --save angular-bootstrap-datetimepicker
+
+and
+
 bower update
 
-now you can use app
+Now you can use the app.
